@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zuki — Home mock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --charcoal: #2A2E2A;
+      --matcha: #8FA67F;
+      --matcha-deep: #6f8a5f;
+      --peach: #F0B8A8;
+      --sand: #F3EEE6;
+      --white: #FFFFFF;
+      --muted: #6b746e;
+      --line: #e2d9cc;
+      --shadow: 0 28px 60px rgba(42, 46, 42, 0.22);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      font-family: "Outfit", sans-serif;
+      color: var(--charcoal);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 32px 16px 48px;
+      background:
+        radial-gradient(900px 480px at 12% 0%, #e4eddd 0%, transparent 55%),
+        radial-gradient(800px 420px at 90% 10%, #fde8e0 0%, transparent 50%),
+        linear-gradient(180deg, #faf7f1 0%, #efe8db 100%);
+    }
+    .stage { width: min(100%, 420px); }
+    .label {
+      text-align: center;
+      margin: 0 0 18px;
+    }
+    .wordmark {
+      font-family: "Nunito", sans-serif;
+      font-weight: 800;
+      font-size: 42px;
+      letter-spacing: -0.04em;
+      display: inline-flex;
+      align-items: baseline;
+    }
+    .wordmark .i {
+      position: relative;
+    }
+    .wordmark .i::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 50% 50% 42% 42%;
+      background: var(--matcha);
+      top: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow:
+        0 -5px 0 -3px var(--matcha),
+        -3px -4px 0 -3px var(--matcha),
+        3px -4px 0 -3px var(--matcha),
+        0 0 0 3px rgba(143, 166, 127, 0.2);
+    }
+    .tagline {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .phone {
+      width: min(100%, 340px);
+      margin: 0 auto;
+      aspect-ratio: 390 / 844;
+      background: var(--sand);
+      border-radius: 42px;
+      border: 11px solid #171b19;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .notch {
+      position: absolute;
+      top: 9px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 108px;
+      height: 24px;
+      background: #171b19;
+      border-radius: 0 0 16px 16px;
+      z-index: 2;
+    }
+    .status {
+      height: 48px;
+      padding: 16px 22px 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .screen {
+      flex: 1;
+      padding: 4px 18px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 0;
+    }
+    .app-brand {
+      font-family: "Nunito", sans-serif;
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin-top: 4px;
+    }
+    .app-brand .i { position: relative; }
+    .app-brand .i::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50% 50% 42% 42%;
+      background: var(--matcha);
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow:
+        0 -4px 0 -2.5px var(--matcha),
+        -2.5px -3.5px 0 -2.5px var(--matcha),
+        2.5px -3.5px 0 -2.5px var(--matcha);
+    }
+    .spot-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      background: var(--matcha);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .spot-pill .eye {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      position: relative;
+      display: inline-block;
+    }
+    .spot-pill .eye::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .list {
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+    .row {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 14px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 1px 0 rgba(42,46,42,0.03);
+    }
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #f0ebe2;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: var(--charcoal);
+    }
+    .icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .meta { flex: 1; min-width: 0; }
+    .name { font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .qty {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: var(--peach);
+      color: var(--charcoal);
+      font-weight: 800;
+      font-size: 13px;
+      display: grid;
+      place-items: center;
+      font-family: "Nunito", sans-serif;
+    }
+    .chev { color: #b0aaa0; font-size: 20px; font-weight: 500; }
+    .cta {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-radius: 18px;
+      background: var(--charcoal);
+      color: #fff;
+      font: 800 16px/1 "Nunito", sans-serif;
+      padding: 16px;
+      cursor: pointer;
+      letter-spacing: -0.01em;
+    }
+    .cta:active { transform: translateY(1px); }
+    .nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: end;
+      padding: 10px 10px 18px;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(10px);
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      gap: 2px;
+    }
+    .nav .item { display: grid; gap: 4px; justify-items: center; padding-top: 4px; }
+    .nav .item.active { color: var(--matcha-deep); }
+    .nav svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .fab {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--matcha);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      margin-top: -22px;
+      box-shadow: 0 10px 20px rgba(143, 166, 127, 0.35);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .foot {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+    .foot a { color: var(--charcoal); font-weight: 600; }
+    .pillars {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .pillars span {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div class="label">
+      <div class="wordmark">Zuk<span class="i">i</span></div>
+      <p class="tagline">Home mock · short-mark chrome · “3 lows spotted”</p>
+      <div class="pillars"><span>Spot</span><span>Ease</span><span>Share</span></div>
+    </div>
+
+    <div class="phone" id="zuki-home">
+      <div class="notch"></div>
+      <div class="status"><span>9:41</span><span>▮▮▮</span></div>
+      <div class="screen">
+        <div class="app-brand">Zuk<span class="i">i</span></div>
+
+        <a class="spot-pill" href="#lows" aria-label="3 lows spotted">
+          <span class="eye" aria-hidden="true"></span>
+          3 lows spotted ›
+        </a>
+
+        <div class="list" id="lows">
+          <div class="row">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 4h8v3a4 4 0 0 1-8 0V4z"/><path d="M7 7h10v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7z"/></svg>
+            </div>
+            <div class="meta">
+              <div class="name">Milk</div>
+              <div class="hint">Low · fridge</div>
+            </div>
+            <div class="qty">1</div>
+            <div class="chev">›</div>
+          </div>
+
+          <div class="row">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="6" y="5" width="12" height="14" rx="2"/><path d="M9 5V3h6v2"/><path d="M9 11h6"/></svg>
+            </div>
+            <div class="meta">
+              <div class="name">TP</div>
+              <div class="hint">Low · bath</div>
+            </div>
+            <div class="qty">2</div>
+            <div class="chev">›</div>
+          </div>
+
+          <div class="row">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="14" rx="7" ry="5"/><path d="M7 12c1-4 9-4 10 0"/><path d="M10 9c.5-2 3.5-2 4 0"/></svg>
+            </div>
+            <div class="meta">
+              <div class="name">Eggs</div>
+              <div class="hint">Low · fridge</div>
+            </div>
+            <div class="qty">1</div>
+            <div class="chev">›</div>
+          </div>
+        </div>
+
+        <button class="cta" type="button">+ Add</button>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <div class="item active">
+          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="7" ry="4"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg>
+          Spot
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24"><path d="M8 7h11"/><path d="M8 12h11"/><path d="M8 17h11"/><circle cx="4.5" cy="7" r="1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="4.5" cy="17" r="1" fill="currentColor" stroke="none"/></svg>
+          List
+        </div>
+        <div class="item"><div class="fab" aria-hidden="true">+</div></div>
+        <div class="item">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="10" r="2.5"/><path d="M3.5 19c1.2-3 4-4.5 5.5-4.5S13 16 14 19"/><path d="M14 19c.6-2 2.4-3.2 4-3.2 1.2 0 2.4.6 3.2 1.8"/></svg>
+          Share
+        </div>
+        <div class="item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.2"/><path d="M5.5 19.5c1.4-3.4 4-5 6.5-5s5.1 1.6 6.5 5"/></svg>
+          You
+        </div>
+      </nav>
+    </div>
+
+    <p class="foot">
+      Locked chrome · <a href="https://github.com/bryanchug/checkmo-design/blob/main/branding/zuki-lock.md">zuki-lock.md</a>
+      · jobs gallery: <a href="./index.html">5 screens</a>
+    </p>
+  </div>
+</body>
+</html>
